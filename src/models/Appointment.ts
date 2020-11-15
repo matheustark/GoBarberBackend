@@ -1,7 +1,10 @@
+/* eslint-disable camelcase */
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
   ManyToOne,
   JoinColumn,
 } from 'typeorm';
@@ -20,8 +23,14 @@ class Appointment {
   @JoinColumn({ name: 'provider_id' })
   provider: User;
 
-  @Column('time with time zone')
+  @Column('timestamp with time zone')
   date: Date;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
 }
 
 export default Appointment;
